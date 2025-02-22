@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col">
+                <div class="row">
+                    <div class="col-6 mt-5">
+                        <h1>Bienbenido a mi One Page</h1>
+                        <br>
+                        <p>Este sitio carga tarjetas de boostrap dinamicas.</p>
+                        <br>
+                    </div>
+                    <div class="col-6 mt-5">
+                        <img class="img-fluid" alt="img" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/910ef7ee-7fcd-4f55-9b6c-f2056fdda32c/dg6sfbr-55f652b0-f87d-428d-b572-e3a2b5c87990.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzkxMGVmN2VlLTdmY2QtNGY1NS05YjZjLWYyMDU2ZmRkYTMyY1wvZGc2c2Zici01NWY2NTJiMC1mODdkLTQyOGQtYjU3Mi1lM2EyYjVjODc5OTAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._P7awbRY1IAL2AIKeGxb0q5kHSSdW-VkOX9fKvRMH7Q" >
+                    </div>
+                </div>
+                <div class="row mt-5" id="tarjetas">
+                    <div class="card col-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Este es un titulo 
+                            </h5>
+                            <p class="card-text">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui ipsa dolor doloribus labore porro et mollitia totam aut in natus ullam atque perferendis odio expedita, vel, similique nesciunt enim dignissimos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            function loadCards(title, text){
+                var card = document.createElement('div');
+                card.setAttribute('class', 'card col-4');
+
+                var body = document.createElement('div');
+                body.setAttribute('class','card-body');
+
+                var h5 = document.createElement('h5');
+                h5.setAttribute('class','card-title');
+                h5.innerHTML = title;
+
+                var p = document.createElement('p');
+                p.setAttribute('class','card-text');
+                p.innerHTML = text;
+
+                body.appendChild(h5);
+                body.appendChild(p);
+                card.appendChild(body);
+
+                document.getElementById('tarjetas').appendChild(card);
+            }
+
+
+            var i = 1;
+
+            window.addEventListener('scroll', () => {
+                if((window.innerHeight +  window.scrollY) >= 
+                document.body.offsetHeight -10)
+
+                    for(let index = 0; index < 5; index++){
+                        if(i>100){break;}
+                        var object = {
+                            title: 'Titulo dinamico de Card: '+i,
+                            text: 'Texto dinamico de la card: '+i
+                        }
+                        loadCards(object.title, object.text);
+                        i++;
+                    }
+                    
+            })
+
+
+        </script>
+    </body>
+</html>
